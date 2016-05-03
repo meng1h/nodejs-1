@@ -34,18 +34,9 @@ router.post('/',middle_check_login,function(req,res,next){
 });
 
 //新增
-router.post('/index', middle_check_login,function(req,res,next) {
+router.post('/index', middle_check_login,UserControler.api.get_all,function(req,res,next) {
 
-	console.log(req.body);
-	console.log(req.body.first);
 
-	console.log(UserControler.api.get_all);
-
-	var tmp=UserControler.api.get_all;
-
-	if(tmp)
-		res.send(tmp);
-	
 	/*
 	User.findOne({
 		email:req.body.email

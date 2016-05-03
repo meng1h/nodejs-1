@@ -10,11 +10,13 @@ head
 	script.
 		$(document).ready(function() {
 
-
-			$("#btnSub").click(function(){
+			//查询按钮
+			$("#btnQuery").click(function(){
 				console.log($("form").serialize());
 
-				$.post("index"
+				$.post("index?limit=" + 5
+						+"&pageno="+1
+						+"&pagesize="+5
 						,$("form").serialize()
 						,function(data,status){
 							console.log(data);
@@ -72,33 +74,48 @@ body
 
 		input(type="button", id="btnSub",value="提交")
 		input(type="button", id="btnDel",value="删除")
+		input(type="button", id="btnQuery", value="查询")
 		br
-		div#div1
 
 
-div.container-fluid 
-	dir.row-fluid
-		div.span2
-			ul.nav.nav-list
-				li.nav-header
-					WMS-V0.0.1
+	div#div1
 
-				li.active
-					a 模型
-				li
-					a 模型
-				li
-					a 模型
-				li.nav-header
-					功能列表
-		div.span6
-			ul.nav.nav-tabs
-				li.active
-					a 模型
-				li
-					a 模型
-				li.disabled
-					a 模型
+
+	div
+		ul.pagination
+			li
+				a &laquo
+			li
+				a 1
+			li
+				a 2
+			li
+				a 3
+			li
+				a &raquo
+	div.container-fluid 
+		dir.row-fluid
+			div.span2
+				ul.nav.nav-list
+					li.nav-header
+						WMS-V0.0.1
+
+					li.active
+						a 模型
+					li
+						a 模型
+					li
+						a 模型
+					li.nav-header
+						功能列表
+			div.span6
+				ul.nav.nav-tabs
+					li.active
+						a 模型
+					li
+						a 模型
+					li.disabled
+						a 模型
 
 
 
