@@ -7,10 +7,14 @@ UserService.get_one_by_id=function(u_id){
 	return UserDao.find_one_by_id(u_id);
 }
  
-UserService.get_all = function(pagesize,pageno,limit){
+UserService.get_all = function(pagesize,pageno){
 	//console.log('service'+UserDao.find_all());
-	console.log('1'+limit);
-	return UserDao.find_all(pagesize,pageno,limit);
+	//console.log('1'+limit);
+	return UserDao.find_all(pagesize,pageno);
+}
+
+UserService.count_all=function(condition){
+  return UserDao.count_all(condition);
 }
 
 module.exports = UserService;

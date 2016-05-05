@@ -3,7 +3,8 @@
 
 var middle_check_login=function(req, res, next) {
 
-	next();
+  console.log("in middle_check_login");
+  next();
 
 };
 

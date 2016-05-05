@@ -1,0 +1,31 @@
+meta(charset="utf-8")
+meta(http-equiv="X-UA-Compatible" content="IE=edge")
+meta(name="viewport" content="initial-scale=1, maximum-scale=1")
+meta(name="apple-mobile-web-app-capable",content="yes")
+meta(name="apple-mobile-web-app-status-bar-style",content="black")
+meta(name="format-detection" content="telephone=no")
+title WMS-LDL@Aircos
+
+script(src='javascripts/jquery-2.2.3.js')
+
+//head.jade
+link(href="plugin/bootstrap/dist/css/bootstrap.min.css",rel="stylesheet")
+script(src="plugin/bootstrap/dist/js/bootstrap.min.js")
+  
+
+//切换是否是开发环境
+- var is_debug = true;
+script.
+  var is_debug = !{is_debug}
+  //if (is_debug == false)
+      
+      // script(src='/assets/js_min/getbannerlist.min.js')
+      // script(src='/assets/js_min/zepto.min.js')
+      // script(src='/assets/js_min/config.min.js')
+
+  //else
+
+      // script(src='/assets/js/getbannerlist.js')
+      // script(src='/assets/js/zepto.js')
+      // script(src='/assets/js/config.js')
+    

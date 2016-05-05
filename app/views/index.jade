@@ -1,122 +1,155 @@
-doctype html
-head 
-	title WMS
-	script(src='javascripts/jquery-2.2.3.js')
+extends layout/layout.jade
 
-	//head.jade
-	link(href="plugin/bootstrap/dist/css/bootstrap.min.css",rel="stylesheet")
-	script(src="plugin/bootstrap/dist/js/bootstrap.min.js")
+block contenthead
+  script.
+    $(document).ready(function() {
 
-	script.
-		$(document).ready(function() {
+      var pageno =1;
+      var pagesize =5;
+      var total = 0;
 
-			//查询按钮
-			$("#btnQuery").click(function(){
-				console.log($("form").serialize());
+      $("#combopagesize").change(function(){
+        pagesize=$(this).val();
+        queryUserList();
+      });
 
-				$.post("index?limit=" + 5
-						+"&pageno="+1
-						+"&pagesize="+5
-						,$("form").serialize()
-						,function(data,status){
-							console.log(data);
+      //分页按钮被点击
+      function paginationClick(){
 
-							if(data)
-							{
-							$("#div1").html('');
-							for(var i=0;i<data.length;i++)
-							{
+      }
 
-								$("#div1").append('<p>'+data[i].first +'-'+data[i].email+'</p>');
-							}
+      $(".pagination").find("li").click(function(){
+          //- $(".pagination").find("li").attr("class","");
+          //- //console.log(this);
+          //- $(this).attr("class","active");
 
-							}
-						});
-			});
+          //- if(pageno==0){
+          //-   $(".pagination").find("li").eq(0).attr("class","disabled");
+          //-   $(".pagination").find("li").eq(1).attr("class","disabled");
+          //- }else if(pageno==(total/pagesize)){
+          //-   $(".pagination").find("li").eq(2).attr("class","disabled");
+          //-   $(".pagination").find("li").eq(3).attr("class","disabled");
+          //- }
+          var tmp=$(this).find("a").text();
+          console.log(tmp);
+          if(tmp=="首页" && pageno>1)
+          {
+            pageno = 1;
+          }else if(tmp=="上一页" && pageno>1)
+          {
+            pageno --;
+          }else if(tmp=="下一页" &&pageno<total/pagesize){
+            pageno++
+          }else if(tmp=="尾页" &&pageno<total/pagesize){
+            pageno = Math.ceil(total/pagesize);
+          }
 
-			$("#btnDel").click(function(){
-				$.post("index/del"
-						,$("form").serialize()
-						,function(data,status){
-							console.log(data);
+          console.log(pageno);
 
-							if(data)
-							{
-							$("#div1").html('');
-							for(var i=0;i<data.length;i++)
-							{
+          queryUserList();
+      });
 
-								$("#div1").append('<p>'+data[i].first +'-'+data[i].email+'</p>');
-							}
+      function queryUserList(){
+        $.post("index?"+"pageno="+pageno +"&pagesize="+pagesize
+            ,$("form").serialize()
+            ,function(data,status){
+              console.log(data);
 
-							}
-						});
-			});
-		});
+              if(data)
+              {
+                $("#tb-list").find("tbody tr").remove();
+                for(var i=0;i<data['rows'].length;i++)
+                {
 
-	style.
-		label{
-			//background-color:red
-		}
+                  $("#tb-list").append('<tr>'+
+                                          '<td><input type="checkbox" id="'+data['rows'][i].first+'"></td>'+
+                                          '<td>'+data['rows'][i].first +'</td>'+
+                                          '<td>'+data['rows'][i].email+'</td>'+
+                                        '</tr>');
+                }
+                total = data["total"];
+                $("#showpagedetails").text("  当前页"+pageno+
+                                            "/总页数"+Math.ceil(total/pagesize)+
+                                            " 总记录数"+total);
+              }
+            });
+      }
 
-body
-	p home page
-	form(name="form1")
+      //查询按钮
+      $("#btnQuery").click(function(){
+        queryUserList();
+      });
 
-		label 用户名
+      $("#btnDel").click(function(){
+        $.post("index/del"
+            ,$("form").serialize()
+            ,function(data,status){
+              console.log(data);
 
-		input(type="text" name="first")
-		br
+              if(data)
+              {
+                $("#tb-list").children("tbody tr").remove();
+                for(var i=0;i<data.length;i++)
+                {
 
-		label 邮件
-		input(type="text" name="email")
-		br
+                  $("#tb-list").append('<tr>'+data[i].first +'-'+data[i].email+'</tr>');
+                }
 
-		input(type="button", id="btnSub",value="提交")
-		input(type="button", id="btnDel",value="删除")
-		input(type="button", id="btnQuery", value="查询")
-		br
+              }
+            });
+      });
+    });
 
+  style.
+    label{
+      //background-color:red
+    }
 
-	div#div1
+block content
 
+  p home page
+  form(name="form1")
 
-	div
-		ul.pagination
-			li
-				a &laquo
-			li
-				a 1
-			li
-				a 2
-			li
-				a 3
-			li
-				a &raquo
-	div.container-fluid 
-		dir.row-fluid
-			div.span2
-				ul.nav.nav-list
-					li.nav-header
-						WMS-V0.0.1
+    label 用户名
 
-					li.active
-						a 模型
-					li
-						a 模型
-					li
-						a 模型
-					li.nav-header
-						功能列表
-			div.span6
-				ul.nav.nav-tabs
-					li.active
-						a 模型
-					li
-						a 模型
-					li.disabled
-						a 模型
+    input(type="text" name="first")
+    br
+
+    label 邮件
+    input(type="text" name="email")
+    br
+
+    input(type="button", id="btnSub",value="提交")
+    input(type="button", id="btnDel",value="删除")
+    input(type="button", id="btnQuery", value="查询")
+    br
 
 
+  div#div1
+
+  div
+    nav
+      ul.pagination
+        li
+          a 首页
+        li 
+          a 上一页
+        li 
+          a 下一页
+        li
+          a 尾页
+
+    table.table.table-bordered(data-click-to-select="true" ,id="tb-list")
+      thead
+        tr
+          th(data-field="state" data-checkbox="true")
+          th(data-field="name") Name
+          th(data-field="email") Email
+    label#showpagedetails 当前页1/总页数1 总记录数0  每页显示
+    select(id="combopagesize")
+      option(value="5") 5
+      option(value="20") 20
+      option(value="50") 50
+      option(value="100") 100
 
 

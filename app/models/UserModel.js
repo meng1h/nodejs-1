@@ -9,6 +9,7 @@ var Schema = mongoose.Schema;
 var UserModel = mongoose.model("User",new Schema({
   first:String
   ,last:String
+  ,last1:String
   ,email:{type:String,unique:true}
   ,password:{type:String}
 }));

@@ -4,7 +4,7 @@ var User
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-	res.send
+  res.send
   res.send('<script>alert("nice")</script>');
 });
 
