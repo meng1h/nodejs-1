@@ -1,0 +1,57 @@
+extends ../layout/layout.jade
+
+block contenthead
+  script.
+    {
+      //alert("nb");
+    }
+block content
+
+  p storagein home page
+
+  form(name="form1")
+
+    label 预收货单ID
+
+    input(type="text" name="first")
+    br
+
+    label Details
+    input(type="text" name="email")
+    br
+
+    input(type="button", id="btnSub",value="提交")
+    input(type="button", id="btnDel",value="删除")
+    input(type="button", id="btnQuery", value="查询")
+    input(type="button", id="btnQuery", value="print")
+    input(type="button", id="btnQuery", value="print_checked")
+
+    br
+
+
+  div#div1
+
+  div
+    nav
+      ul.pagination
+        li
+          a 首页
+        li 
+          a 上一页
+        li 
+          a 下一页
+        li
+          a 尾页
+
+    table.table.table-bordered(data-click-to-select="true" ,id="tb-list")
+      thead
+        tr
+          th(data-field="state" data-checkbox="true")
+          th(data-field="name") Name
+          th(data-field="email") Email
+    label#showpagedetails 当前页1/总页数1 总记录数0  每页显示
+    select(id="combopagesize")
+      option(value="5") 5
+      option(value="20") 20
+      option(value="50") 50
+      option(value="100") 100

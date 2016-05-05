@@ -17,6 +17,10 @@ UserService.count_all=function(condition){
   return UserDao.count_all(condition);
 }
 
+UserService.add_user = function(user_info){
+	return UserDao.add_user(user_info);
+}
+
 module.exports = UserService;
 
 

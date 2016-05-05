@@ -3,6 +3,46 @@ html
   head
     include layout.head.jade
     block contenthead
+    style.
+        .main-north{
+          position:absolute;
+          top:0;
+          left:0;
+          height:10%;
+          width:100%;
+          background:white
+        }
+        .main-south{
+          position:absolute;
+          top:90%;
+          left:0;
+          height:10%;
+          width:100%;
+          background:white
+        }
+        .main-west{
+          position:absolute;
+          top:10%;
+          left:0;
+          height:80%;
+          width:20%;
+          background:white
+        }
+        .main-center{
+          position:absolute;
+          top:10%;
+          left:20%;
+          height:80%;
+          width:80%;
+          background:white
+        }
   body
-      block content
-    //- include layout.footer.jade
+      div.main-north
+        include layout.north.jade
+      div.main-south
+        include layout.south.jade
+      div.main-west
+        include layout.west.jade
+      div.main-center
+        block content
+

@@ -8,12 +8,6 @@ exports.api = {
 
   },
   get_all : function(req,res,next){
-    //console.log('in service');
-    //console.log(UserService.get_all());
-
-    //console.log('limit'+req.query.limit);
-
-    //pagesize,pageno,limit,sort,condition
     var pagesize = req.query.pagesize;
     var pageno = req.query.pageno;
 
@@ -30,10 +24,15 @@ exports.api = {
         })
       });
     });
-    
-
-
-    // res.send(UserService.get_all());
-    //return;
+  },
+  user_add:function(req,res,next){
+    console.log(req.body);
+    UserService.add_user(req.body).then(function(){
+      //res.status=200;
+      res.json({data:"NB"});
+    }).catch(function(err){
+      console.log(err);
+      res.json={data:err}
+    });
   }
 }

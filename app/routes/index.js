@@ -33,36 +33,13 @@ router.post('/',middle_check_login,function(req,res,next){
     */
 });
 
-//新增
+//find all
 router.post('/index', middle_check_login,UserControler.api.get_all,function(req,res,next) {
 
+});
 
-  /*
-  User.findOne({
-    email:req.body.email
-  },function(err,doc){
-    if (doc) {
-
-      //res.send();
-    }else{
-        new User({first:req.body.first, email:req.body.email}).save(function(err){
-        if(err) return next(err);
-      });
-
-    }
-
-    User.find(function(err,doc){
-      if(err) return next(err);
-      if(!doc) return res.send('<p>User not found.Go back and try again');
-
-      res.send(doc);
-      //req.session.loggedin=doc._id.toString();
-      //res.redirect('/');
-    });
-  });
-
-  */
-
+//new user
+router.post('/add', middle_check_login,UserControler.api.user_add,function(req,res,next) {
 
 });
 

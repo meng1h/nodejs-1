@@ -80,6 +80,17 @@ block contenthead
         queryUserList();
       });
 
+      //submit
+      $("#btnSub").click(function(){
+        $.post("add"
+          ,$("form").serialize()
+          ,function(data){
+            console.log(data);
+
+            queryUserList();
+          });
+      });      
+
       $("#btnDel").click(function(){
         $.post("index/del"
             ,$("form").serialize()

@@ -19,9 +19,7 @@ UserDao.find_one_by_id = function (u_id){
 }
 
 UserDao.add_user = function(user_info){
-    new UserModel(user_info).save(function(err){
-    if(err) return next(err);
-  });
+   return UserModel(user_info).save();
 }
 
 // 获取用户列表，分页显示
