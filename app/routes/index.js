@@ -34,9 +34,7 @@ router.post('/',middle_check_login,function(req,res,next){
 });
 
 //find all
-router.post('/index', middle_check_login,UserControler.api.get_all,function(req,res,next) {
-
-});
+router.post('/index', middle_check_login,UserControler.api.get_all,function(req,res,next) {});
 
 //new user
 router.post('/add', middle_check_login,UserControler.api.user_add,function(req,res,next) {
