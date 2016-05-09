@@ -1,61 +1,80 @@
+
+script.
+  // alert('ok ');
+  $(document).ready(function(){
+      $(".container-fluid").find("li").css("display","none");
+      $(".nav-header").css("display","");
+    // alert();
+      $(".nav-header").click(function(){
+        $(".container-fluid").find("li").css("display","none");
+        $(".nav-header").css("display","");
+        $(this).parent().find("li").css("display","");
+      });
+    });
+
 div.container-fluid
   div.row-fluid
     div.span12
       ul.nav.nav-list
-        li.active
-          a(href="/") home
         li.nav-header 
           a +入库作业
         li
-          a(href="/storagein") 采购订单
+          a(href="/stockin/po") 采购订单
         li
-          a(href="/storagein/asn") ASN/收货单
+          a(href="/stockin/asn") ASN/收货单
         li
-          a(href="#") 收货
+          a(href="/stockin/receipt") 收货
         li
-          a(href="#") 配位
+          a(href="/stockin/upperstorage") 上架
         li
-          a(href="#") 上架
-        li
-          a(href="#") 销退
+          a(href="/stockin/salereturn") 销退
+      ul.nav.nav-list
         li.nav-header 
           a +出库作业
         li
-          a(href="#") 波次
+          a(href="/stockout/wave") 波次
         li 
-          a(href="#") 整托拣货
+          a(href="/stockout/pickbysal") 整托拣货
         li
-          a(href="#") 整件拣货
+          a(href="/stockout/pickbybox") 整件拣货
         li
-          a(href="#") 零捡拣货
+          a(href="/stockout/pickbypiece") 零捡拣货
         li
-          a(href="#") 复核
+          a(href="/stockout/check") 复核
         li
-          a(href="#") 销售退货
+          a(href="/stockout/purchasertn") 采购退货
+      ul.nav.nav-list
         li.nav-header 
           a +库内作业
         li
-          a(href="#") 补货
+          a(href="/jobinside/restock") 补货
         li 
-          a(href="#") 盘点
+          a(href="/jobinside/inventory") 盘点
         li
-          a(href="#") 移位
+          a(href="/jobinside/movestock") 移位
         li.nav-header 
+      ul.nav.nav-list 
+        li.nav-header
           a +配置
         li
-          a(href="#") 货品
+          a(href="/confbasic/warehouse") 仓库
+        li
+          a(href="/confbasic/area") 区域  
+        li
+          a(href="/confbasic/loc") 货位
+        li
+          a(href="/confbasic/product") 货品
         li 
-          a(href="#") 包装
+          a(href="/confbasic/package") 包装
         li
-          a(href="#") 纸箱
+          a(href="/confbasic/productowner") 货主        
         li
-          a(href="#") 库位
-        li
-          a(href="#") 区域
+          a(href="/confbasic/carrier") 承运商        
+      ul.nav.nav-list 
         li.nav-header 
           a +管理
         li
-          a(href="#")用户
+          a(href="/confsys/user") 用户
         li 
-          a(href="#") 角色
+          a(href="/confsys/role") 角色
 

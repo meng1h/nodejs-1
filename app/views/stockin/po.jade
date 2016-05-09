@@ -1,0 +1,64 @@
+extends ../layout/layout.jade
+block contenthead
+  script.
+    $(document).ready(function(){
+      //alert();
+        $("#poid").keypress(function(code){
+          // console.log(code);
+          if(13==code.keyCode)
+            queryPo();
+          });
+        $("#btnQ").click(function(){
+          queryPo();
+          });
+      });
+    function queryPo(poid){
+      var poid = $("#poid").val();
+      if(10==poid.length)
+      {
+        $.post("/stockin/PO/"+poid,function(data){
+              
+          });
+      }else{
+        alert("请输入有效采购单号");
+      }
+    }
+block content
+  div.content-top
+    P 你好 采购订单（PO单）查询界面 
+    B 此处库存未入库
+    P 此处主要做系统 查询 功能，只做wms界面开发，不做rf和打印
+    P 该界面的主要工作量在api接口 后台
+
+  div.content-head
+    from#fm-po
+      lable 采购单号
+      input#poid
+      button#btnQ 查询
+    div.poinfomain
+      lable 采购单号
+      input#poid_show
+      lable 供应商
+      input#supplier_show
+      lable 制单日期
+      input.form-control.created_time.datepicker(id="created_time_begin" type="text"  
+        placeholder="请选择日期" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="display:inline;width:200px;height:25px;positon:relative;")
+
+      lable 制单员
+      input#operater_show
+      lable 预期送货日期
+      input.form-control.created_time.datepicker(id="created_time_begin" type="text"  
+              placeholder="请选择日期" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="display:inline;width:200px;height:25px;positon:relative")
+
+    table.table.table-bordered(data-click-to-select="true" ,id="tb-list")
+      thead
+        tr
+          th(data-field="po_id") 采购单编号
+          th(data-field="po_id") 供应商
+          th(data-field="po_id") 制单日期
+          th(data-field="po_id") 制单员
+          th(data-field="po_id") 送货日期
+          th(data-field="po_id") 送货联系人
+          th(data-field="po_id") 送货联系人电话
+
+

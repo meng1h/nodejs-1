@@ -1,0 +1,11 @@
+extends ../layout/layout.jade
+block contenthead
+
+block content
+  div.content-top
+    P 你好 上架操作 （主功能在RF，纸单上架，wms系统上架_暂不做，开发工作在api接口）
+    B 此处库存由暂存区更改为具体货位
+    P 按托盘上架，按sku上架，纸单上架
+    p 收货员持RF到收货暂存区，进行上架任务的操作 可进行托盘上架和sku上架
+    p 上架员在wms系统选择asn单，打印上架单，系统推荐上架库位，实物上架，记录上架库位，返回系统处，
+    p   在asn单上录入上架库位信息。

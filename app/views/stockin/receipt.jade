@@ -1,0 +1,10 @@
+
+extends ../layout/layout.jade
+block contenthead
+
+block content
+  div.content-top
+    P 你好 收货 （开发工作在wms系统收货界面，RF，纸单收货打印回填，相应api）
+    P wms提供4中收货方法：按箱收货，按sku，纸单，工作台逐渐扫描
+    p wms收货必须有asn单，回传上位系统以asn为基本单位，回传契机为收货确认
+    B 此处确认后，生成库存在收货暂存区
