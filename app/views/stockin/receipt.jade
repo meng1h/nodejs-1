@@ -5,6 +5,14 @@ block contenthead
 block content
   div.content-top
     P 你好 收货 （开发工作在wms系统收货界面，RF，纸单收货打印回填，相应api）
+    p 收货界面 检索的唯一条件是asn单号
+    p 系统检索出该asn的明细，做收货，修改asn单据状态为已收货，增加库存到收货暂存区
+    B 库存信息要不要带货主？？？？？？？？？涉及的问题就是多货主共有一个sku，是否混放？？？从仓储角度来说要放在一起
     P wms提供4中收货方法：按箱收货，按sku，纸单，工作台逐渐扫描
     p wms收货必须有asn单，回传上位系统以asn为基本单位，回传契机为收货确认
     B 此处确认后，生成库存在收货暂存区
+
+    br
+    label 预收货单号
+    input(type="text" id="asn_id" placeholder="请手输或扫码")
+

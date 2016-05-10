@@ -10,7 +10,8 @@ var AsnModel = mongoose.model("stock_in_asn",new Schema({
   supplier:String,//供应商
   asn_statu:String,//单据状态
   asn_create_date:Date,//单据创建时间
-  asn_detail:{
+  // asn_res:String, //单据来源
+  asn_detail:[{
     pro_name:String //品名
     ,pro_spec:String //规格
     ,pro_origin:String //产地
@@ -18,7 +19,7 @@ var AsnModel = mongoose.model("stock_in_asn",new Schema({
     ,pro_birth_date:Date //生产日期
     ,pro_dead_date:Date //效期
     ,qty:Number //数量
-  }
+  }]
 }));
 
 Promise.promisifyAll(AsnModel);

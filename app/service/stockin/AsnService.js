@@ -25,7 +25,7 @@ AsnService.find_list = function(asn_statu,limit,offset,sort,order){
     asn_id:1,//单据号
     supplier:1,//供应商
     asn_statu:1,//单据状态
-    asn_create_dat:1//单据创建时间
+    asn_create_date:1//单据创建时间
   };
 
   return AsnDao.find_list(condition,selection,limit,offset,sort,order);

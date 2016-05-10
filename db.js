@@ -4,10 +4,14 @@ mongoose = require('mongoose');
 
 mongoose = require('mongoose');
 
-var config = require('./config');
-var host  = config.get('mongodb.host');
-var port  = config.get('mongodb.port');
-var db    = config.get('mongodb.db');
+// var config = require('./config');
+// var host  = config.get('mongodb.host');
+// var port  = config.get('mongodb.port');
+// var db    = config.get('mongodb.db');
+
+var host  = '127.0.0.1';
+var port  = '27017';
+var db    = 'mytest-mongoose';
 
 
 connectionString = 'mongodb://' + host + ':' + port + '/' + db + '';

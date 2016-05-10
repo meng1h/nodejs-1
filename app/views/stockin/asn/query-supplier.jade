@@ -1,0 +1,17 @@
+div#myModal.modal.fade
+      div.modal-dialog
+        div.modal-content
+          div.modal-header
+            p 供应商查询->双击选定
+          div.modal-body
+            input#modal_query_supplier(placeholder="请输入供应商助记码")
+            table.table.table-bordered
+              thead
+                th(data-field="state" ) 供应商id
+                th(data-field="state" ) 供应商名称
+                th(data-field="state" ) 电话
+                th(data-field="state" ) email
+                th(data-field="state" ) 助记码
+              tbody#modal_supplier_list
+          div.modal-footer
+            button(type="button" class="btn btn-default" data-dismiss="modal") close

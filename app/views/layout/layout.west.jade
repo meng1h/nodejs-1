@@ -52,7 +52,11 @@ div.container-fluid
           a(href="/jobinside/inventory") 盘点
         li
           a(href="/jobinside/movestock") 移位
+      ul.nav.nav-list
         li.nav-header 
+          a +跨库作业
+        li
+          a(href="/jobinside/restock") 调拨
       ul.nav.nav-list 
         li.nav-header
           a +配置
@@ -69,7 +73,9 @@ div.container-fluid
         li
           a(href="/confbasic/productowner") 货主        
         li
-          a(href="/confbasic/carrier") 承运商        
+          a(href="/confbasic/carrier") 承运商          
+        li
+          a(href="/confbasic/supplier") 供应商        
       ul.nav.nav-list 
         li.nav-header 
           a +管理
@@ -77,4 +83,6 @@ div.container-fluid
           a(href="/confsys/user") 用户
         li 
           a(href="/confsys/role") 角色
+        li 
+          a(href="/confsys/role") 日志查询
 

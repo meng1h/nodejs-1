@@ -1,0 +1,100 @@
+extends ../../layout/layout.jade
+
+block contenthead
+  script(src="../javascripts/stockin/asn.js")
+
+block content
+
+  //- p storagein asn
+  //- p 此处库存未入库
+  //- p ans只在wms系统可用，无rf和纸单开发
+  //- p 流程说明 ：通过线下预约的方式（电话，传真，邮件等），由仓储部门创建ASN单，新增asn单的方式有：手工新增，自采购订单（PO）创建，excel等导入
+  //- p 此界面支持ans新增，asn修改，ans删除，asn明细修改
+  p 已收货不允许修改
+
+
+  form(name="form1")
+
+    label 预收货单号
+    input(type="text" id="asn_id" placeholder="请手输或扫码")
+    label 供应商
+    span
+      input(type="text" id="supplier")
+    label 单据状态
+    select(id="asn_statu")
+        option(value="1") 未预约
+        option(value="2") 预约未收货
+        option(value="3") 已收货
+    label 日期
+    input.form-control.created_time.datepicker(id="created_time_begin" type="text"  
+        placeholder="起始日期" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="display:inline")
+    label —
+    input.form-control.created_time.datepicker(id="created_time_begin" type="text"  
+        placeholder="截止日期" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="display:inline")  
+    //- input(type="button", id="btnSub",value="提交")
+    //- input(type="button", id="btnDel",value="删除")
+    input(type="button", id="btnQuery", value="查询")
+  div.wms-show-supplier-list
+    div.wms-aduq-bar
+      button(type = "button" class="btn btn-default" id="btn-asn-add") 新增
+      button(type = "button" class="btn btn-default") 修改
+      button(type = "button" class="btn btn-default") 删除
+      button(type = "button" class="btn btn-default") 批量删除
+    div.wms-table-thead
+      table.table
+        thead
+          tr
+            th(data-field="state" data-checkbox="true" style="width:50px")
+            th(data-field="asn_id" style="width:50px") 预收货单ID
+            th(data-field="supplier" style="width:50px") 供应商
+            th(data-field="asn_statu" style="width:50px") 单据状态
+            th(data-field="asn_create_time" style="width:50px") 创建时间
+    div.wms-table-body
+      table.table.table-bordered(data-click-to-select="true")
+        tbody#tb-list
+    div.wms-pagination-detail
+      label#showpagedetails 当前页1/总页数1 总记录数0  每页显示
+      select(id="combopagesize")
+        option(value="5") 5
+        option(value="10") 10
+        option(value="20") 20
+        option(value="50") 50
+    div.wms-pagination-bar
+      nav
+        ul.pagination
+          li
+            a 首页
+          li 
+            a 上一页
+          li 
+            a 下一页
+          li
+            a 尾页
+  //asn订单详细信息显示
+  div 
+    div asn订单详细信息
+    div.wms-aduq-bar
+      button(type = "button" class="btn btn-default" id="btn-asn-add-detail") 新增
+      button(type = "button" class="btn btn-default") 修改
+      button(type = "button" class="btn btn-default") 删除
+      button(type = "button" class="btn btn-default") 批量删除
+    div
+      table.table.table-bordered(data-click-to-select="true" ,id="tb-list-detail")
+        thead
+          tr
+            th(data-field="asn_id") 品名
+            th(data-field="supplier") 规格
+            th(data-field="asn_statu") 产地
+            th(data-field="asn_create_time") 包装大小
+            th(data-field="asn_create_time") 
+
+  include add-main.jade
+  include query-supplier.jade
+  include add-detail.jade
+
+
+
+
+
+
+
